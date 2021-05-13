@@ -30,8 +30,8 @@ export async function loadJob(id) {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
-      query: `{
-          job(id :"${id}"){
+      query: `query JobQuery($id: ID!){
+          job(id : $id){
             id
             title
             description
@@ -41,6 +41,7 @@ export async function loadJob(id) {
             }
           }
         }`,
+      variables: { id },
     }),
   });
 
